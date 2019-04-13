@@ -1,4 +1,20 @@
 {
     "name": "user-has-devices",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "description": "A better API experience for userMediaDevices",
+    "license": "MIT",
+    "repository": "AllUsernamesHaveBeenTaken/user-has-devices",
+    "main": "index.js",
+    "keywords": [
+        "userMediaDevice",
+        "npm",
+        "package",
+        "user-has-devices",
+        "AllUsernamesHaveBeenTaken",
+        "camera",
+        "device",
+        "devices",
+        "api",
+        "abstraction"
+    ]
 }
