@@ -5,8 +5,8 @@
     "description": "A better API experience for userMediaDevices",
     "license": "MIT",
     "main": "index.js",
-    "files": ["lib/**/*"],
     "scripts": {
+        "test": "jest --config jestconfig.json",
         "build": "tsc",
         "prettier": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
         "lint": "tslint -p tsconfig.json"
@@ -32,9 +32,15 @@
     },
     "homepage": "https://github.com/AllUsernamesHaveBeenTaken/user-has-devices/blob/master/readme.md",
     "devDependencies": {
+        "@types/jest": "^24.0.11",
+        "jest": "^24.7.1",
         "prettier": "^1.17.0",
+        "ts-jest": "^24.0.2",
         "tslint": "^5.15.0",
         "tslint-config-prettier": "^1.18.0",
         "typescript": "^3.4.3"
-    }
+    },
+    "files": [
+        "lib/**/*"
+    ]
 }
