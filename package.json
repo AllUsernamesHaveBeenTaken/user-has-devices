@@ -1,6 +1,6 @@
 {
     "name": "user-has-devices",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "description": "A better API experience for userMediaDevices",
     "license": "MIT",
     "repository": "AllUsernamesHaveBeenTaken/user-has-devices",
