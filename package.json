@@ -1,12 +1,19 @@
 {
     "name": "user-has-devices",
     "version": "0.0.1",
+    "author": "Seppe Snoeck",
     "description": "A better API experience for userMediaDevices",
     "license": "MIT",
-    "repository": "AllUsernamesHaveBeenTaken/user-has-devices",
     "main": "index.js",
+    "files": ["lib/**/*"],
     "scripts": {
-        "build": "tsc"
+        "build": "tsc",
+        "prettier": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+        "lint": "tslint -p tsconfig.json"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/AllUsernamesHaveBeenTaken/user-has-devices.git"
     },
     "keywords": [
         "userMediaDevice",
@@ -20,7 +27,14 @@
         "api",
         "abstraction"
     ],
+    "bugs": {
+        "url": "https://github.com/AllUsernamesHaveBeenTaken/user-has-devices/issues"
+    },
+    "homepage": "https://github.com/AllUsernamesHaveBeenTaken/user-has-devices/blob/master/readme.md",
     "devDependencies": {
+        "prettier": "^1.17.0",
+        "tslint": "^5.15.0",
+        "tslint-config-prettier": "^1.18.0",
         "typescript": "^3.4.3"
     }
 }
