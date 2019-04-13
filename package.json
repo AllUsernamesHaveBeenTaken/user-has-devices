@@ -4,7 +4,8 @@
     "author": "Seppe Snoeck",
     "description": "A better API experience for userMediaDevices",
     "license": "MIT",
-    "main": "index.js",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
     "scripts": {
         "test": "jest --config jestconfig.json",
         "build": "tsc",
