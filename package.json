@@ -5,6 +5,9 @@
     "license": "MIT",
     "repository": "AllUsernamesHaveBeenTaken/user-has-devices",
     "main": "index.js",
+    "scripts": {
+        "build": "tsc"
+    },
     "keywords": [
         "userMediaDevice",
         "npm",
