@@ -1,5 +1,5 @@
 const mockMediaDevices= {
-	enumerateDevices: () => {
+	enumerateDevices: async () => {
 		return [
 			{deviceId: "default", kind: "audioinput", label: "", groupId: "2418be7831f691f57674c0a02596f74d5a7838ed368db4ce51e73e16997aa20f"},
 			{deviceId: "e08bb75673f61b97c33625e54cdd3e2626a09204f7e77253bf8db384a97d38bb", kind: "audioinput", label: "", groupId: "eac4af9f01f1afe052ce8178927df5ecda6dbe861c39a3c327682b24e2094fd4"},
@@ -9,6 +9,41 @@ const mockMediaDevices= {
 			{deviceId: "dd15cc251e792753c3cbfa89f3604eea5acdde71d490995f4a13ab8ce8144dd2", kind: "audiooutput", label: "", groupId: "eac4af9f01f1afe052ce8178927df5ecda6dbe861c39a3c327682b24e2094fd4"},
 			{deviceId: "24151060720366600ba2ee0ff3025e2d3c7f37d5350b7bec9690bf601ec6ed49", kind: "audiooutput", label: "", groupId: "2418be7831f691f57674c0a02596f74d5a7838ed368db4ce51e73e16997aa20f"}
 		]
+	},
+	getSupportedConstraints: () => {
+		return {
+			aspectRatio: true,
+			autoGainControl: true,
+			brightness: true,
+			channelCount: true,
+			colorTemperature: true,
+			contrast: true,
+			deviceId: true,
+			echoCancellation: true,
+			exposureCompensation: true,
+			exposureMode: true,
+			exposureTime: true,
+			facingMode: true,
+			focusDistance: true,
+			focusMode: true,
+			frameRate: true,
+			groupId: true,
+			height: true,
+			iso: true,
+			latency: true,
+			noiseSuppression: true,
+			pointsOfInterest: true,
+			resizeMode: true,
+			sampleRate: true,
+			sampleSize: true,
+			saturation: true,
+			sharpness: true,
+			torch: true,
+			volume: true,
+			whiteBalanceMode: true,
+			width: true,
+			zoom: true
+		}
 	},
 	getUserMedia: jest.fn()
 }
