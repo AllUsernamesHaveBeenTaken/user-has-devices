@@ -2,7 +2,7 @@ import IUserHasDevices from './IUserHasDevices';
 
 export class UserHasDevices implements IUserHasDevices {
     private devices: MediaDeviceInfo[] = [];
-    private supportedConstraints: MediaTrackSupportedConstraints = {}
+    private supportedConstraints: MediaTrackSupportedConstraints = {};
 
     constructor() {
         this.initialize();
@@ -12,26 +12,37 @@ export class UserHasDevices implements IUserHasDevices {
         return this.devices;
     };
 
-    public getSupportedConstraints = () => {
-        return this.supportedConstraints
-    }
+    public getSupportedConstraints = (): MediaTrackSupportedConstraints => {
+        return this.supportedConstraints;
+    };
 
     private initialize = async (): Promise<void> => {
         this.devices = await this.initAllAvailavbleDevice();
-        this.supportedConstraints = this.initSupportedConstraints()
+        this.supportedConstraints = this.initSupportedConstraints();
     };
 
     private initAllAvailavbleDevice = async (): Promise<MediaDeviceInfo[]> => {
         const tempDevices: MediaDeviceInfo[] = [];
-        const enumerateDevices = await navigator.mediaDevices.enumerateDevices()
-        enumerateDevices.map((device: MediaDeviceInfo) => {
-            tempDevices.push(device);
-        });
+        try {
+            const enumerateDevices = await navigator.mediaDevices.enumerateDevices();
+            enumerateDevices.map((device: MediaDeviceInfo) => {
+                tempDevices.push(device);
+            });
+        } catch (error) {
+            console.error(error)
+        }
 
         return tempDevices;
     };
 
     private initSupportedConstraints = (): MediaTrackSupportedConstraints => {
-        return navigator.mediaDevices.getSupportedConstraints()
-    }
+        let getSupportedConstraints: MediaTrackSupportedConstraints = {}
+        try {
+            getSupportedConstraints = navigator.mediaDevices.getSupportedConstraints();
+        } catch (error) {
+            console.error(error)
+        }
+
+        return getSupportedConstraints
+    };
 }
