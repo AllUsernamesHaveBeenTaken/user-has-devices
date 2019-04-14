@@ -3,6 +3,7 @@ import IUserHasDevices from './IUserHasDevices';
 export class UserHasDevices implements IUserHasDevices {
     private devices: MediaDeviceInfo[] = [];
     private supportedConstraints: MediaTrackSupportedConstraints = {};
+    private userMedia: MediaStream[] = [];
 
     constructor() {
         this.initialize();
@@ -14,6 +15,14 @@ export class UserHasDevices implements IUserHasDevices {
 
     public getSupportedConstraints = (): MediaTrackSupportedConstraints => {
         return this.supportedConstraints;
+    };
+
+    public getUserMedia = async (constraints: MediaStreamConstraints): Promise<MediaStream[]> => {
+        if (this.userMedia.length <= 0) {
+            this.userMedia = await this.saveGetUserMedia(constraints);
+        }
+
+        return this.userMedia;
     };
 
     private initialize = async (): Promise<void> => {
@@ -29,20 +38,35 @@ export class UserHasDevices implements IUserHasDevices {
                 tempDevices.push(device);
             });
         } catch (error) {
-            console.error(error)
+            console.error(error);
         }
 
         return tempDevices;
     };
 
     private initSupportedConstraints = (): MediaTrackSupportedConstraints => {
-        let getSupportedConstraints: MediaTrackSupportedConstraints = {}
+        let getSupportedConstraints: MediaTrackSupportedConstraints = {};
         try {
             getSupportedConstraints = navigator.mediaDevices.getSupportedConstraints();
         } catch (error) {
-            console.error(error)
+            console.error(error);
         }
 
-        return getSupportedConstraints
+        return getSupportedConstraints;
+    };
+
+    private saveGetUserMedia = async (constraints: MediaStreamConstraints): Promise<MediaStream[]> => {
+        const getUserMedia: MediaStream[] = [];
+
+        await navigator.mediaDevices
+            .getUserMedia(constraints)
+            .then((stream: MediaStream) => {
+                getUserMedia.push(stream);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+        return getUserMedia;
     };
 }
